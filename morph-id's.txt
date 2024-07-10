@@ -1,0 +1,4 @@
+ID 33 - Cloudy (Restricted: no)
+ID 26 - Burrito (Restricted: no)
+ID 24 - Black impostor (Restricted: yes)
+ID 14 - Churro (Restricted: no)
