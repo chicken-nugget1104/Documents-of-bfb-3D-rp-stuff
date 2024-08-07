@@ -6,19 +6,16 @@ if MorphsFolder then
     
     -- Function to gather morph data
     local function gatherMorphData(morph)
-        local config = morph:FindFirstChild("Config")
-        if config then
-            local displayName = config:FindFirstChild("DisplayName")
-            local morphId = config:FindFirstChild("MorphId")
-            local restricted = config:FindFirstChild("Restricted")
-            
-            if displayName and morphId and restricted then
-                table.insert(morphs, {
-                    Id = morphId.Value,
-                    Name = displayName.Value,
-                    Restricted = restricted.Value
-                })
-            end
+        local displayName = morph:GetAttribute("DisplayName")
+        local morphId = morph:GetAttribute("MorphId")
+        local restricted = morph:GetAttribute("Restricted")
+        
+        if displayName and morphId and restricted ~= nil then
+            table.insert(morphs, {
+                Id = morphId,
+                Name = displayName,
+                Restricted = restricted
+            })
         end
     end
     
@@ -27,9 +24,9 @@ if MorphsFolder then
         gatherMorphData(morph)
     end
     
-    -- Sort morphs by ID
+    -- Sort morphs by ID in descending order
     table.sort(morphs, function(a, b)
-        return a.Id < b.Id
+        return a.Id > b.Id
     end)
     
     -- Print and save the morph data
